@@ -1,9 +1,9 @@
 'use client'
-
 import React, { useState, useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { getCatImages } from '~/api/api'
 import CatOverLordModal from './components/CatOverLordModal'
+import Image from 'next/image'
 
 function InfiniteCatScroller() {
     const [catList, setCatList] = useState<string[]>([])
@@ -17,13 +17,7 @@ function InfiniteCatScroller() {
         getCatList()
     }, [])
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-            }}
-        >
+        <div className="flex flex-col items-center">
             <CatOverLordModal
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
@@ -32,18 +26,20 @@ function InfiniteCatScroller() {
                 Summon the Cat Overlord
             </button>
             <InfiniteScroll
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
+                className="flex flex-col items-center"
                 dataLength={catList.length}
                 next={getCatList}
                 hasMore={true}
                 loader={<h4>Loading...</h4>}
             >
                 {catList.map((item, index) => (
-                    <img key={index} src={item} alt="" />
+                    <Image
+                        key={index}
+                        src={item}
+                        alt=""
+                        width={1300}
+                        height={1080}
+                    />
                 ))}
             </InfiniteScroll>
         </div>

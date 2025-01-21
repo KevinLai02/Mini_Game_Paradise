@@ -4,11 +4,13 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { getCatImages } from '~/api/api'
 import CatOverLordModal from './components/CatOverLordModal'
 import Image from 'next/image'
-import BackButton from '~/components/BackButton'
+import Button from '~/components/Button/Button'
+import { useRouter } from 'next/navigation'
 
 function InfiniteCatScroller() {
     const [catList, setCatList] = useState<string[]>([])
     const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter()
 
     const getCatList = async () => {
         const res = await getCatImages()
@@ -23,7 +25,12 @@ function InfiniteCatScroller() {
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
             />
-            <BackButton />
+            <Button
+                title="< Back"
+                onClick={() => {
+                    router.push('/')
+                }}
+            />
             <button onClick={() => setIsOpen(true)}>
                 Summon the Cat Overlord
             </button>

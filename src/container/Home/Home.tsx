@@ -4,8 +4,9 @@ import Link from 'next/link'
 
 const Home = () => {
     return (
-        <div>
-            <Link href={'/InfiniteCatScroller'}>cat</Link>
+        <div className="flex flex-col">
+            <Link href={'/InfiniteCatScroller'}>InfiniteCatScroller</Link>
+            <Link href={'/SandwichBuilder'}>SandwichBuilder</Link>
         </div>
     )
 }

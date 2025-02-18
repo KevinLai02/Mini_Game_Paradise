@@ -7,6 +7,7 @@ const Home = () => {
         <div className="flex flex-col">
             <Link href={'/InfiniteCatScroller'}>InfiniteCatScroller</Link>
             <Link href={'/SandwichBuilder'}>SandwichBuilder</Link>
+            <Link href={'/TriviaQuiz'}>TriviaQuiz</Link>
         </div>
     )
 }
